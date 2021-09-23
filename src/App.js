@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Header from "./header/Header";
+import { useState } from "react";
+import Selector from "./components/Selector";
+import Music from "./components/Music";
+import Book from "./components/Book";
 
-function App() {
+const App = () => {
+  const [type, setType] = useState("music");
+  const [data, setData] = useState(null);
+
+  function Block() {
+    if (type === "music" && data) {
+      return <Music data={data} />;
+    }
+    if (type === "book" && data) {
+      return <Book data={data} />;
+    }
+    return null;
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="min-h-screen flex flex-col">
+      <Header />
+      <div className="container mx-auto flex-grow">
+        <Selector setType={setType} setData={setData} />
+        <Block />
+      </div>
     </div>
   );
-}
+};
 
 export default App;
