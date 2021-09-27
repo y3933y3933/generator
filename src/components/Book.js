@@ -2,17 +2,15 @@ import React from "react";
 
 const Book = ({ data }) => {
   let text = "";
-  if (data.sentences) {
-    text = data.sentences.split("\\n").join("<br/>");
-  }
+  text = data.sentences.split("\\n").join("<br/>");
 
   return (
     <div className="w-9/12 mx-auto bg-gray-200 my-6 p-4">
       <div
-        className="text-center text-lg leading-10"
+        className="text-center text-sm leading-6 md:text-lg md:leading-10"
         dangerouslySetInnerHTML={{ __html: text }}
       ></div>
-      <div className="text-sm text-right">
+      <div className="md:text-sm text-xs text-right">
         --{data.author}《{data.title}》
       </div>
     </div>
@@ -20,4 +18,3 @@ const Book = ({ data }) => {
 };
 
 export default Book;
-
