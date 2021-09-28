@@ -21,8 +21,8 @@ const App = () => {
   }, [data]);
 
   function generate(type) {
-    setIsLoading(true);
     if (type) {
+      setIsLoading(true);
       getData(db, type)
         .then((val) => {
           setData(val);
@@ -51,7 +51,6 @@ const App = () => {
         </div>
         <Block />
       </div>
-    
     </div>
   );
 };
